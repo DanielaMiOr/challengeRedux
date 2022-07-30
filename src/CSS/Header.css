@@ -1,0 +1,60 @@
+.containerHeader{
+   display: flex;
+   flex-direction: row;
+   width: 100%;
+   height: 120px;
+   justify-content: space-between;
+   background-color:#fff;
+   margin-left: 105px;
+   
+}
+.containerText{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin-top: 25px;
+}
+.iconHome{
+    width: 25px;
+    height: 25px;
+  
+   
+}
+.productsHeader{
+    color:#5B00A2;
+    display: flex;
+}
+.pSpecial{
+    color:#676767;
+    display: flex;
+    justify-self: left;
+}
+.containerLogo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 30% 70% ;
+    margin: 25px 35px 0 0;
+}
+.pLogo{
+    color:#242424;
+    grid-column: 1;
+    grid-row: 1/1;
+
+}
+.logoPerfil{
+    width: 65px;
+    height: auto;
+    grid-column: 2;
+    grid-row: 1/span 2;
+
+}
+.pSouthorn{
+    color:#676767;
+    justify-self: center;
+    grid-column: 1;
+    grid-row: 2/ 2;
+    
+    
+   
+}

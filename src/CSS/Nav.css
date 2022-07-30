@@ -1,0 +1,9 @@
+ul {
+    margin: 25px 0 0 5px;
+    padding: 0;
+    width: 80px;
+    background-color: #fff;
+    height: 100%; /* Full height */
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+  }
