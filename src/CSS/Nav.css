@@ -6,4 +6,18 @@ ul {
     height: 100%; /* Full height */
     position: fixed; /* Make it stick, even on scroll */
     overflow: auto; /* Enable scrolling if the sidenav has too much content */
+    flex-direction: column;
+    justify-content: center;
+  }
+  .iconNav{
+    width: 35px;
+    height: auto;
+    cursor: pointer;
+    margin:10px 0 45px 0;
+  }
+  .homeIcon{
+    margin-top: 50px;
+  }
+  .boxIcon{
+    color:#5B00A2;
   }

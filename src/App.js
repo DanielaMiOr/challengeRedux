@@ -38,15 +38,15 @@ function App() {
   return (
     <>
     <div className="containerPrincipal">
-      {/* <Nav /> */}
+      <Nav />
       <Header />
       <ContainerProducts
   //  key={product.id}
    ></ContainerProducts>
-   <AddProducts/>
-    {/* <Table
+   
+    <Table
    data={products} 
-  ></Table> */}
+  ></Table>
       {/* <section> 
       {isViewTable &&
         products &&

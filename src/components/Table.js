@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTable, usePagination, useSortBy, useGlobalFilter } from "react-table";
-
+import{AiOutlineSearch} from 'react-icons/ai';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { BiFilterAlt } from 'react-icons/bi';
 import '../CSS/Table.css';
@@ -101,11 +101,11 @@ export default function Table(props) {
             </div>
             <div className="table">  
             <table {...getTableProps()}>
-                <section className="boxTitle">
+               
                 <thead>
                 
                     {headerGroups.map((headerGroup) => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
+                        <tr className="columns" {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
                             
                                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
@@ -122,7 +122,7 @@ export default function Table(props) {
                         </tr>
                     ))}
                 </thead>
-                </section>
+                
                 <tbody {...getTableBodyProps()}>
                     {rows.map((row) => {
                         prepareRow(row);
