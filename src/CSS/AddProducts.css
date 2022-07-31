@@ -1,0 +1,97 @@
+.addContainer{
+    width: 100%;
+    height: auto;
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr ;
+    
+   
+}
+.boxAddInfo{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.pData{
+    color:rgba(76, 17, 123, 1);
+    font-size: 12px;
+    font-weight: bold;
+
+}
+.pAdd{
+    font-size: 10px;
+    color:rgba(36, 36, 36, 1);
+    justify-items: end;
+    display: flex;
+}
+.inputAddData{
+    width: 800px;
+    height: 28px;
+    border: 1px solid rgba(216, 214, 222, 1);
+    background-color: transparent;
+    border-radius: 4px;
+}
+.inputAddData::placeholder {
+    font-size: 12px;
+    color:rgba(91, 0, 162, 0.5);
+    padding-left: 15px;
+  }
+
+.list{
+    width: 800px;
+    height: 28px; 
+    border: 1px solid rgba(216, 214, 222, 1);
+    background-color: transparent;
+    color:rgba(91, 0, 162, 0.5);
+    font-size: 12px;
+    border-radius: 4px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.btns{
+    display: grid;
+    width: 100%;
+    /* flex-direction: row; */
+
+}
+.btnCancelar{
+    border:1px solid rgba(255, 21, 21, 1);
+    width: 100px;
+    height: 42px;
+    color:rgba(255, 21, 21, 1);
+    text-align:center;
+    background-color: transparent;
+    border-radius: 5px;
+    grid-column: 2;
+    grid-row: -2;
+    justify-items: flex-end;
+    cursor: pointer;
+
+
+}
+.btnSave{
+    width: 165px;
+    height: 42px;  
+    color:rgba(91, 0, 162, 1);
+    border:1px solid rgba(91, 0, 162, 1);
+    border-radius:5px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.btnLoadProduct{
+    width: 190px;
+    height: 42px;  
+    background-color:rgba(91, 0, 162, 1);
+    border-radius:5px;
+    color:#FFFFFF;
+    cursor: pointer;
+    border:none;
+    align-items: center;
+   
+}

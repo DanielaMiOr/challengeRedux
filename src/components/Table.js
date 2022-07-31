@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTable, usePagination, useSortBy, useGlobalFilter } from "react-table";
-import { AiOutlineSearch } from 'react-icons/ai';
+
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { BiFilterAlt } from 'react-icons/bi';
 import '../CSS/Table.css';
@@ -65,7 +65,7 @@ export default function Table(props) {
             <div className="containerBtnUp">
                 <div className="filterItems">
                     <p>No.items: </p>
-                    <select
+                    <select className="pageSelect"
                         value={pageSize}
                         onChange={e => {
                             setPageSize(Number(e.target.value))
@@ -78,27 +78,30 @@ export default function Table(props) {
                         ))}
                     </select>
                 </div>
-                <AiOutlineSearch />
+               
                 <input
-                    type="text"
+                 className="search"
+                placeholder= "Busca por SKU"
+                    type="search"
                     value={state.globalFilter}
                     onChange={(event) => setGlobalFilter(event.target.value)}
                 />
 
-                <div>
-                    <button>
+                <div className="filterBox">
+                    <button className="btnColumn">
                         <img
                             className="vectorIcon"
                             src={require("../img/vector.png")}
                             alt="imgvector" />
 
                         Gestionar columnas <FiChevronDown /> </button>
-                    <button> <BiFilterAlt /> </button>
+                    <button className="filter"> <BiFilterAlt className="iconBtnSize" /> </button>
 
                 </div>
             </div>
             <div className="table">  
             <table {...getTableProps()}>
+                <section className="boxTitle">
                 <thead>
                 
                     {headerGroups.map((headerGroup) => (
@@ -119,6 +122,7 @@ export default function Table(props) {
                         </tr>
                     ))}
                 </thead>
+                </section>
                 <tbody {...getTableBodyProps()}>
                     {rows.map((row) => {
                         prepareRow(row);
