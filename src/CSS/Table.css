@@ -112,5 +112,44 @@ td {
     margin: 0;
     border-bottom: 2px solid rgba(91, 0, 162, 0.2);
     padding: 5px 40px 5px 5px;
+    width: fit-content;
+    height: 40px;
    
+}
+.btnTableOpcion{
+    border:none;
+    background-color: transparent;
+}
+.opcionTable{
+    color:#5B00A2;
+   
+}
+ .table .containerBtnPagination{
+    width: 100px;
+    height: fit-content;
+    display: flex;
+    justify-content: right;
+    align-content: right;
+    margin-top: 10px;
+    
+}
+.columnState{
+    display: flex;
+    color:rgba(32, 201, 151, 1);
+    border: 1px solid rgba(32, 201, 151, 1);
+    width: 140px;
+    height: 20px;
+    align-content: center;
+    justify-content: center;
+
+}
+.btonPagination{
+    width: 32px;
+    height: 32px;
+    background-color: rgba(103, 103, 103, 0.12);
+    border-radius: 29px;
+    color:#5B00A2;
+    border:none;
+    justify-content: right;
+    align-items: right;
 }

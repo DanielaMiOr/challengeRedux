@@ -1,9 +1,10 @@
 import { useMemo } from "react";
 import { useTable, usePagination, useSortBy, useGlobalFilter } from "react-table";
-import{AiOutlineSearch} from 'react-icons/ai';
+import{BiDotsVertical} from 'react-icons/bi';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { BiFilterAlt } from 'react-icons/bi';
 import '../CSS/Table.css';
+import Minimodal from "./MiniModal";
 export default function Table(props) {
 
 
@@ -36,8 +37,14 @@ export default function Table(props) {
             },
             {
                 Header: "ESTADO",
-                accessor: "enable"
-            }
+                accessor: "enable",
+                Cell: () => (<p className="columnState">Publicado</p>)
+            },
+            {
+                Header: "",
+                id: "icon",
+                Cell: () => (<button className="btnTableOpcion"onClick={Minimodal}><BiDotsVertical className="opcionTable" /></button>)
+            },
         ],
 
         []
@@ -139,14 +146,14 @@ export default function Table(props) {
                     })}
                 </tbody>
             </table>
-            <div>
+            <div className="containerBtnPagination">
 
 
-                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+                <button className="btonPagination" onClick={() => previousPage()} disabled={!canPreviousPage}>
                     {"<"}
                 </button>
 
-                <button onClick={() => nextPage()} disabled={!canNextPage}>
+                <button className="btonPagination" onClick={() => nextPage()} disabled={!canNextPage}>
                     {">"}
                 </button>
             </div>
