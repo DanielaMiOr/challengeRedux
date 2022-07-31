@@ -51,8 +51,10 @@ function AddProducts(){
     </section>
     <section className="btns">
     <button className="btnCancelar"> Cancelar</button>
+    <section className="containerBtnsLoad">
     <button className="btnSave">Guardar y Salir</button>
     <button className="btnLoadProduct"><AiOutlinePlus/> Cargar producto</button>
+    </section>
     </section>
 </div>
 

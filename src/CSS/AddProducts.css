@@ -16,18 +16,21 @@
     align-content: center;
     flex-direction: column;
     align-items: center;
+    
 }
-.pData{
+.boxAddInfo .pData{
     color:rgba(76, 17, 123, 1);
-    font-size: 12px;
+    font-size: 18px;
     font-weight: bold;
+    align-self: flex-start;
+    margin-bottom: 10px;
 
 }
-.pAdd{
-    font-size: 10px;
+.boxAddInfo .pAdd{
+    font-size: 14px;
     color:rgba(36, 36, 36, 1);
-    justify-items: end;
-    display: flex;
+    align-self: flex-start;
+    padding:5px;
 }
 .inputAddData{
     width: 800px;
@@ -55,9 +58,14 @@
 }
 
 .btns{
-    display: grid;
+    grid-column: 2;
+    grid-row: 3/2;
+    justify-content:space-between;
+    display: flex;
     width: 100%;
-    /* flex-direction: row; */
+    flex-direction: row;
+    margin-top: 45px;
+    
 
 }
 .btnCancelar{
@@ -75,6 +83,10 @@
 
 
 }
+.containerBtnsLoad{
+    display: flex;
+    
+}
 .btnSave{
     width: 165px;
     height: 42px;  
@@ -83,6 +95,7 @@
     border-radius:5px;
     background-color: transparent;
     cursor: pointer;
+    
 }
 .btnLoadProduct{
     width: 190px;
@@ -93,5 +106,6 @@
     cursor: pointer;
     border:none;
     align-items: center;
+    margin-left: 25px;
    
 }
