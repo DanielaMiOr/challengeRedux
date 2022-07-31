@@ -112,10 +112,11 @@ export default function Table(props) {
                                     {column.render("Header")}
                                     <span>
                                         {column.isSorted
-                                            ? column.isSortedDesc
-                                                ? <button > <FiChevronUp /> </button>
-                                                : <button > <FiChevronDown /> </button>
-                                            : ""}
+                                            // ? column.isSortedDesc
+                                                ? <button > <FiChevronUp  className="iconDirection1"/> </button>
+                                                : <button > <FiChevronDown className="iconDirection1"/> </button>
+                                            // : ""
+                                        }
                                     </span>
                                 </th>
                             ))}

@@ -15,6 +15,10 @@ ul {
     cursor: pointer;
     margin:10px 0 45px 0;
   }
+  .iconNav:hover{
+    box-shadow: 0 4px 16px rgb(143, 49, 172);
+    transition: all 0.2s ease;
+  }
   .homeIcon{
     margin-top: 50px;
   }

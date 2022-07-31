@@ -13,7 +13,7 @@
     align-items: flex-start;
     font-size: 25px;
     font-weight:normal;
-    margin-left: 95px;
+    margin-left: 150px;
 
 }
 .LessThan{
@@ -23,7 +23,6 @@
 }
 .containerButtonsMenu{
     display: flex;
-    
     gap:25px
 }
 .btnActivate{
