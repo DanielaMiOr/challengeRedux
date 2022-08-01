@@ -1,13 +1,23 @@
 import { useMemo } from "react";
 import { useTable, usePagination, useSortBy, useGlobalFilter } from "react-table";
-import{BiDotsVertical} from 'react-icons/bi';
+import { BiDotsVertical } from 'react-icons/bi';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { BiFilterAlt } from 'react-icons/bi';
 import '../CSS/Table.css';
-import Minimodal from "./MiniModal";
+import { useState } from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
+import 'bootstrap/dist/css/bootstrap.css';
+import ContainerProducts from "./ContainerProducts";
+import { deleteProduct } from "../actions/products";
+import { useDispatch } from "react-redux";
+
 export default function Table(props) {
+    const dispatch = useDispatch();
 
+    const handleDeleteProduct = (event, props) => {
+        dispatch(deleteProduct(props.cell.row.values.upc))
 
+    }
     const { data } = props
     const columns = useMemo(
         () => [
@@ -43,19 +53,37 @@ export default function Table(props) {
             {
                 Header: "",
                 id: "icon",
-                Cell: () => (<button className="btnTableOpcion"onClick={Minimodal}><BiDotsVertical className="opcionTable" /></button>)
+                Cell: (props) => (
+                    <div style={{ display: 'block', 
+                  width:35 }}>
+                    <Dropdown>
+                        <Dropdown.Toggle id="dropdown-basic">
+                            <BiDotsVertical className="opcionTable" />
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+
+                                    <Dropdown.Item href="#/action-1">Ver detalle</Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Item onClick={event =>handleDeleteProduct(event,props)}>Eliminar producto</Dropdown.Item>
+                                    
+                                    {/* <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    </div>
+
+                )
             },
+
         ],
 
         []
 
     );
-    const tableInstance = useTable({ columns, data,initialState: {pageIndex: 1, pageSize: 5 }}, useGlobalFilter, useSortBy, usePagination);
+    const tableInstance = useTable({ columns, data, initialState: { pageIndex: 1, pageSize: 5 } }, useGlobalFilter, useSortBy, usePagination);
     const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        rows,
         setGlobalFilter,
         prepareRow,
         page,
@@ -65,7 +93,7 @@ export default function Table(props) {
         nextPage,
         canNextPage,
         setPageSize,
-        state: { pageIndex, pageSize }
+        state: { pageSize }
 
     } = tableInstance
     return (
@@ -87,10 +115,10 @@ export default function Table(props) {
                         ))}
                     </select>
                 </div>
-               
+
                 <input
-                 className="search"
-                placeholder= "Busca por SKU"
+                    className="search"
+                    placeholder="Busca por SKU"
                     type="search"
                     value={state.globalFilter}
                     onChange={(event) => setGlobalFilter(event.target.value)}
@@ -108,57 +136,57 @@ export default function Table(props) {
 
                 </div>
             </div>
-            <div className="table">  
-            <table {...getTableProps()}>
-               
-                <thead>
-                
-                    {headerGroups.map((headerGroup) => (
-                        <tr className="columns" {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((column) => (
-                            
-                               <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                                    {column.render("Header")}
-                                    <span>
-                                        {column.isSorted
-                                            // ? column.isSortedDesc
-                                                ? <button > <FiChevronUp  className="iconDirection1"/> </button>
-                                                : <button > <FiChevronDown className="iconDirection1"/> </button>
-                                            // : ""
-                                        }
-                                    </span>
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                
-                <tbody {...getTableBodyProps()}>
-                    {page.map((row) => {
-                        prepareRow(row);
-                        return (
-                            <tr {...row.getRowProps()}>
-                                {row.cells.map((cell) => {
-                                    return (
-                                        <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                                    );
-                                })}
+            <div className="table">
+                <table {...getTableProps()}>
+
+                    <thead>
+
+                        {headerGroups.map((headerGroup) => (
+                            <tr className="columns" {...headerGroup.getHeaderGroupProps()}>
+                                {headerGroup.headers.map((column) => (
+
+                                    <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                        {column.render("Header")}
+                                        <span>
+                                            {column.isSorted
+                                                ? column.isSortedDesc
+                                                ? <button > <FiChevronUp className="iconDirection1" /> </button>
+                                                : <button > <FiChevronDown className="iconDirection1" /> </button>
+                                                : ""
+                                            }
+                                        </span>
+                                    </th>
+                                ))}
                             </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-            <div className="containerBtnPagination">
+                        ))}
+                    </thead>
+
+                    <tbody {...getTableBodyProps()}>
+                        {page.map((row) => {
+                            prepareRow(row);
+                            return (
+                                <tr {...row.getRowProps()}>
+                                    {row.cells.map((cell) => {
+                                        return (
+                                            <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                                        );
+                                    })}
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+                <div className="containerBtnPagination">
 
 
-                <button className="btonPagination" onClick={() => previousPage()} disabled={!canPreviousPage}>
-                    {"<"}
-                </button>
+                    <button className="btonPagination" onClick={() => previousPage()} disabled={!canPreviousPage}>
+                        {"<"}
+                    </button>
 
-                <button className="btonPagination" onClick={() => nextPage()} disabled={!canNextPage}>
-                    {">"}
-                </button>
-            </div>
+                    <button className="btonPagination" onClick={() => nextPage()} disabled={!canNextPage}>
+                        {">"}
+                    </button>
+                </div>
             </div>
         </div>
     )

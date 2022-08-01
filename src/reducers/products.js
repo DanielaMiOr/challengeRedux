@@ -30,7 +30,11 @@ import {
         });
   
       case DELETE_PRODUCT:
-        return products.filter(({ id }) => id !== payload.id);
+        console.log(payload.upc)
+        console.log(products)
+        const filtered = products.filter((product) => product.upc !== payload.upc);
+        console.log(filtered)
+        return products.filter((product) => product.upc !== payload.upc);
   
      
       default:

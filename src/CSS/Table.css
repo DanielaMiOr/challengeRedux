@@ -123,6 +123,11 @@ td {
     color:#5B00A2;
    
 }
+#dropdown-basic{
+background-color: transparent;
+border-radius: none;
+
+}
  .table .containerBtnPagination{
     width: 100px;
     height: fit-content;

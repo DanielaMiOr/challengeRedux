@@ -50,13 +50,14 @@ import {
     }
   };
   
-  export const deleteProduct = (id) => async (dispatch) => {
+  export const deleteProduct = (upc) => async (dispatch) => {
     try {
-      await ProductDataService.remove(id);
-  
+        console.log(upc)
+      const response = await ProductDataService.remove(upc);
+      console.log(response)
       dispatch({
         type: DELETE_PRODUCT,
-        payload: { id },
+        payload: { upc },
       });
     } catch (err) {
       console.log(err);
