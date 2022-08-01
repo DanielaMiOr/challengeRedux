@@ -1,21 +1,34 @@
+import React from 'react';
 import { useMemo } from "react";
 import { useTable, usePagination, useSortBy, useGlobalFilter } from "react-table";
 import { BiDotsVertical } from 'react-icons/bi';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { BiFilterAlt } from 'react-icons/bi';
 import '../CSS/Table.css';
-import { useState } from "react";
+
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.css';
-import ContainerProducts from "./ContainerProducts";
+
 import { deleteProduct } from "../actions/products";
 import { useDispatch } from "react-redux";
+import { ConfirmDelete } from './Modal';
+import Swal from 'sweetalert2'
 
 export default function Table(props) {
     const dispatch = useDispatch();
 
-    const handleDeleteProduct = (event, props) => {
-        dispatch(deleteProduct(props.cell.row.values.upc))
+
+    const handleDeleteProduct = async (event, props) => {
+        const confDelete = await ConfirmDelete();
+        if (confDelete) {
+            dispatch(deleteProduct(props.cell.row.values.upc))
+            Swal.fire(
+                'Éxito!',
+                'El producto ha sido eliminado correctamente.',
+                'success'
+            )
+        }
+
 
     }
     const { data } = props
@@ -54,21 +67,23 @@ export default function Table(props) {
                 Header: "",
                 id: "icon",
                 Cell: (props) => (
-                    <div style={{ display: 'block', 
-                  width:35 }}>
-                    <Dropdown>
-                        <Dropdown.Toggle id="dropdown-basic">
-                            <BiDotsVertical className="opcionTable" />
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
+                    <div className="columnOpcionTble" style={{
+                        display: 'block',
+                        width: 35
+                    }}>
+                        <Dropdown>
+                            <Dropdown.Toggle id="dropdown-basic">
+                                <BiDotsVertical className="opcionTable" />
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
 
-                                    <Dropdown.Item href="#/action-1">Ver detalle</Dropdown.Item>
-                                    <Dropdown.Divider />
-                                    <Dropdown.Item onClick={event =>handleDeleteProduct(event,props)}>Eliminar producto</Dropdown.Item>
-                                    
-                                    {/* <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
-                        </Dropdown.Menu>
-                    </Dropdown>
+                                <Dropdown.Item href="#/action-1">Ver detalle</Dropdown.Item>
+                                <Dropdown.Divider />
+                                <Dropdown.Item onClick={event => handleDeleteProduct(event, props)}>Eliminar producto</Dropdown.Item>
+
+                                {/* <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </div>
 
                 )
@@ -149,10 +164,10 @@ export default function Table(props) {
                                         {column.render("Header")}
                                         <span>
                                             {column.isSorted
-                                                ? column.isSortedDesc
+                                                // ? column.isSortedDesc
                                                 ? <button > <FiChevronUp className="iconDirection1" /> </button>
                                                 : <button > <FiChevronDown className="iconDirection1" /> </button>
-                                                : ""
+                                                // : ""
                                             }
                                         </span>
                                     </th>

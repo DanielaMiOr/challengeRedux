@@ -1,14 +1,21 @@
 ul {
-    margin: 25px 0 0 5px;
+
+  display: absolute;
     padding: 0;
     width: 80px;
     background-color: #fff;
     height: 100%; /* Full height */
-    position: fixed; /* Make it stick, even on scroll */
-    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+    position: fixed;
+    align-content: flex-start;
     flex-direction: column;
     justify-content: center;
+    list-style-type: none;
+    box-shadow: 7px 4px 14px 5px rgba(0,0,0,0.32);
   }
+  .logoPerfil{
+    width: 50px;
+  
+}
   .iconNav{
     width: 35px;
     height: auto;

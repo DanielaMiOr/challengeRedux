@@ -30,39 +30,36 @@ function AddProducts(props) {
     const priceProduct = (event) => {
         setPrice(event.target.value)
     }
-    const stateProductInput =(event)=> {
+    const stateProductInput = (event) => {
         setStateProduct(event.target.value)
-         }
+    }
 
 
-         const saveInfo =()=>{
-            let product = {
-                "simple_sku":skuSimple,
-                "sku":sku,
-                "upc": upc,
-                "product_name": nameProduct,
-                "price": price,
-                "created_at": new Date().toISOString(),
-                "enable": stateProduct,
+    const saveInfo = () => {
 
-             };
-            console.log(product)
-            dispatch(createProduct(product))
+
+        let product = {
+            "simple_sku": skuSimple,
+            "sku": sku,
+            "upc": upc,
+            "product_name": nameProduct,
+            "price": price,
+            "created_at": new Date().toISOString(),
+            "enable": stateProduct,
+
+        };
+        console.log(product)
+        dispatch(createProduct(product))
             .then(data => {
-            //   setTutorial({
-            //     id: data.id,
-            //     title: data.title,
-            //     description: data.description,
-            //     published: data.published
-            //   });
-      
-              console.log(data);
+
             })
             .catch(e => {
-              console.log(e);
+                console.log(e);
             });
-         }
-         
+        viewTable()
+
+    }
+
     return (
         <div className="addContainer">
 
@@ -122,7 +119,7 @@ function AddProducts(props) {
                 <button className="btnCancelar" onClick={viewTable}> Cancelar</button>
                 <section className="containerBtnsLoad">
                     <button className="btnSave" onClick={saveInfo}>Guardar y Salir</button>
-                    <button className="btnLoadProduct"><AiOutlinePlus /> Cargar producto</button>
+                    <button className="btnLoadProduct" onClick={AddProducts}><AiOutlinePlus /> Cargar producto</button>
                 </section>
             </section>
         </div>

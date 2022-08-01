@@ -115,6 +115,7 @@ td {
     height: 40px;
    
 }
+
 .btnTableOpcion{
     border:none;
     background-color: transparent;
@@ -142,9 +143,10 @@ border-radius: none;
     color:rgba(32, 201, 151, 1);
     border: 1px solid rgba(32, 201, 151, 1);
     width: 140px;
-    height: 20px;
+    height: 25px;
     align-content: center;
     justify-content: center;
+  
 
 }
 .btonPagination{

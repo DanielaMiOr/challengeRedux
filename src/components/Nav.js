@@ -15,7 +15,7 @@ function Nav() {
           /> </a><BiHomeAlt className="iconNav homeIcon" /></li>
         <li></li>
         <li> <BsBoxSeam className="iconNav boxIcon" /></li>
-        <li><BsBell  className="iconNav"/></li>
+        <li><BsBell className="iconNav" /></li>
         <li><AiOutlineSetting className="iconNav" /> </li>
 
 
