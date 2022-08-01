@@ -50,7 +50,7 @@ export default function Table(props) {
         []
 
     );
-    const tableInstance = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination);
+    const tableInstance = useTable({ columns, data,initialState: {pageIndex: 1, pageSize: 5 }}, useGlobalFilter, useSortBy, usePagination);
     const {
         getTableProps,
         getTableBodyProps,
@@ -58,13 +58,14 @@ export default function Table(props) {
         rows,
         setGlobalFilter,
         prepareRow,
+        page,
         previousPage,
         state,
         canPreviousPage,
         nextPage,
         canNextPage,
         setPageSize,
-        state: { pageSize }
+        state: { pageIndex, pageSize }
 
     } = tableInstance
     return (
@@ -75,6 +76,7 @@ export default function Table(props) {
                     <select className="pageSelect"
                         value={pageSize}
                         onChange={e => {
+                            console.log(e.target.value)
                             setPageSize(Number(e.target.value))
                         }}
                     >
@@ -132,7 +134,7 @@ export default function Table(props) {
                 </thead>
                 
                 <tbody {...getTableBodyProps()}>
-                    {rows.map((row) => {
+                    {page.map((row) => {
                         prepareRow(row);
                         return (
                             <tr {...row.getRowProps()}>

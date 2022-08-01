@@ -6,19 +6,26 @@ import Table from './components/Table';
 import React, { useState, useEffect } from 'react';
 import { getProducts } from "./components/RequestHandler";
 import AddProducts from './components/AddProducts';
+import { useDispatch, useSelector } from "react-redux";
 
-
+import {
+  retrieveProducts,
+  updateProduct,
+  deleteProduct,
+} from "./actions/products";
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [isViewTable, setViewTable] = useState(false);
+  // const [products, setProducts] = useState([]);
+  const [isViewTable, setViewTable] = useState(true);
   const [addProduct, setAddProduct] = useState([]);
 
-
+  const products = useSelector(state => state.products);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log("inside use effect")
-    loadProducts();
+    // loadProducts();
+    dispatch(retrieveProducts());
   }, []);
 
   const viewTable = () => {
@@ -29,12 +36,12 @@ function App() {
     setViewTable(false)
 
   }
-  const loadProducts = async () => {
-    console.log("load products running")
-    const productsResult = await getProducts();
-    console.log(productsResult.products)
-    setProducts(productsResult.products)
-  }
+  // const loadProducts = async () => {
+  //   console.log("load products running")
+  //   const productsResult = await getProducts();
+  //   console.log(productsResult.products)
+  //   setProducts(productsResult.products)
+  // }
   return (
     <>
     <div className="containerPrincipal">
@@ -42,36 +49,24 @@ function App() {
       <Header />
       <ContainerProducts
   //  key={product.id}
-   ></ContainerProducts>
-    
-    <Table
-   data={products} 
-  ></Table>
-      {/* <section> 
-      {isViewTable &&
-        products &&
-        products.map((product) => {
-          return (
-            
-   <ContainerProducts
-   key={product.id}
-   ></ContainerProducts>
-    <Table
-   data={products} 
-  ></Table>
+     viewAddProduct={viewAddProduct}
 
-          );
-        })}
-      {!isViewTable &&
-        addProduct &&
-        addProduct.map((addProduct) => {
-          return (
-            <AddProducts />
-            
-          );
-        })
-      } */}
-      {/* </section> */}
+   ></ContainerProducts>
+    {isViewTable &&
+     products &&
+    <Table
+   data={products} 
+  ></Table>
+    }
+
+    {
+      !isViewTable &&
+        <AddProducts 
+        viewTable={viewTable}
+        />
+        
+    }
+   
     </div>
     </>
   )
